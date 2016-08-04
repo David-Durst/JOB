@@ -6,7 +6,7 @@ A justified and opinionated template for creating web applications with React an
 
 Here are a curated and annotated list of sources explaining both how to use the technologies in this template and why I chose them. Additionally, I have included my own thoughts when necessary. I consider this to be the minimum subset of reading necessary to understand all the technologies. 
 
-## Terminology
+## Terminology That Confuses Me
 1. JavaScript == ECMAScript
 1. ECMAScript 2015 == ES2015 == ECMAScript 6 == ES6
 1. SASS and LESS are two preprocessors for CSS. They help you write better CSS code. [Read this for more information.](https://www.keycdn.com/blog/sass-vs-less/)
@@ -24,20 +24,48 @@ This application uses:
 1. NPM for package management and as the top-level program for running the build, lint, and test systems
 1. Git for source control
 
+## UI
+There are currently two dominant players in this space: Angular 2 and React. This is not a perfect comparison as Angular 2 handles more than just the UI component of a website. Nevertheless, I will compare them. Angular 2 is the successor to [MVC-like frameworks such as Backbone, Knockout, Ember, and Angular 1](https://developer.mozilla.org/en-US/Apps/Fundamentals/Modern_web_app_architecture/MVC_architecture). It is the best framework to use at this moment if you want to create a MVC web application. However, React takes an alternative, functional approach that, when combined with an appropriate state manager like Redux, promises to make web applications significantly easier to develop and maintain.
+ 
+I prefer React and its ecosystem over Angular because it does a better job of managing state. State is a dangerous beast that makes an application hard to write, test, and maintain. 
+1. State makes writing and testing software harder as the developer must address a more complicated system. A stateless component behaves the same way every time it is called with the same inputs. However, a stateful component can react differently depending on the previous events. This means that, for stateful components, the developer must write code and tests that address all possible states of the component. Additionally, if stateful components interact, the developer must address all possible combinations of states of the interacting components. This number of combinations can quickly grow very large, leading to a large, complicated codebase and many tests. 
+1. State makes maintenance much harder as someone new to the project must understand not only the inputs and outputs of each component but also the internal states of the components and how those states develop throughout the lifetime of the application.
+
+React does a better job at maintaining state than Angular because it better separates the display logic from the application state. In Angular, each UI component directly updates the model backing it [through two way data binding](https://angular.io/docs/ts/latest/guide/architecture.html#!#data-binding). For example, in an application with a todo list and weather information, the todo UI view can update the todo state store separately from the weather UI and state store. This means that the interactions between the state stores and their respective components must be tested for all combinations of states. React takes a different approach. React encourages each UI component to be a pure, stateless function that takes properties in and produces a UI view. The components are not meant to directly interact with each other nor with state stores. Also, React does not handle most state management. This makes the UI much simpler as there are limited possible interactions between UI components. Additionally, it leaves state issues to components designed to deal with them, such as Redux. Thus, React forces the developer in creating less stateful applications that are easier to write, test, and maintain. 
+
+Note: It is possible to do appropriate state management in [Angular 2 using Redux](https://medium.com/google-developer-experts/angular-2-introduction-to-redux-1cf18af27e6e#.809kaj1ra). Additionally, it is possible to have bad state management in [React with two-way data bindings](https://facebook.github.io/react/docs/two-way-binding-helpers.html). However, React defaults to good state management, as one-way data bindings are the default, while [Angular encourages poor state management in its documentation](https://angular.io/docs/ts/latest/guide/architecture.html#!#data-binding).
+
+
+As the number of stateful objects increases, the code must address not only each components' internal state but also each interaction between components for all possible combinations of states. that the code must be more complicated as it must address all possible combinations of states. 
+1. State makes testing harder because the each component must now be tested both for all possible states it has internally and its different interactions with other components depending their internal states. This combinatoric issue drastically increases the number of tests.
+
+
+
+for all possible interactions State increases the number of potential bugs because it makes each usage of a component Each component that maintains state 
+ 
+ Unfortunately, I cannot solve the debate between React and Angular in one section of a readme. The discussion is too complicated for me to successfully argue for one side in a few paragraphs. It also has been previously covered in great detail [by others](http://lmgtfy.com/?q=Angular+vs+React). Personally, I want to develop web applications with React because I have found state to be a dangerous beast that makes code difficult to understand, test, and maintain. When I previously used functional programming approaches that minimized state, I found that they made my projects more successful. 
+
+## State Management
+
+
+
 ## Modules
-1.  Modules provide you with the ability to encapsulate and reuse your code. Unlike almost any other programming language you've ever used, JavaScript does not provide a simple way to create isolated blocks of code in separate files and reuse them across your project.  
-1.  You need to make two choices when using modules in a JavaScript: which theoretical module system and which implementation of that system. As of August 2016, there are three main theoretical approaches to creating a JavaScript module system: CommonJS, AMD, and ES2015 Modules; and, there are three main implementations, all of which support all three methodologies: Browserify, Webpack, and JSPM (aka SystemJS).  
-1.  [This site provides a good overview of the different theoretical module systems, the implementations, and their history.](https://auth0.com/blog/javascript-module-systems-showdown/)
-1.  I will be using ES2015 modules as they produce the simplest code. Additionally, since I will be using Babel anyway for its JSX support (see (ADD MORE EXPLANATION BELOW) for why), ES2015 support comes for free without any additional libraries.
-1.  I will use Webpack instead of JSPM because JSPM appears to be too immature at this point. See [this site](http://ilikekillnerds.com/2016/03/ditching-jspmsystem-js-webpack/) for one user's negative experience with JSPM. Please correct me if I am wrong in ignoring JSPM. It appears to be poised to overtake Webpack at some point in the future. I look forward to adopting it when it becomes sufficiently mature. 
-1.  I will use Webpack instead of Browserify because it provides a more cohesive solution. Browserify and Webpack provide roughly the same features when one considers both the tools and their ecosystems of plugins and loaders. However, Webpack does a better job of enabling the user to utilize those features in a concise, complete manner. Browserify applies the Unix philosophy of doing one thing well, modules for JavaScript, and requires the user to add many other tools to create a fully functioning web application. Since life is short and I want to focus on things other than my application's module and build systems, I will use Browserify. ([Note: I've made many unsupported assertions in this paragraph. This site supports those assertions.](https://medium.com/@housecor/browserify-vs-webpack-b3d7ca08a0a9#.pndg60bg2))
+Modules provide you with the ability to encapsulate and reuse your code. Unlike almost any other programming language you've ever used, JavaScript does not provide a simple way to create isolated blocks of code in separate files and reuse them across your project.  
+
+You need to make two choices when using modules in a JavaScript: which theoretical module system and which implementation of that system. As of August 2016, there are three main theoretical approaches to creating a JavaScript module system: CommonJS, AMD, and ES2015 Modules; and, there are three main implementations, all of which support all three methodologies: Browserify, Webpack, and JSPM (aka SystemJS).  [This site provides a good overview of the different theoretical module systems, the implementations, and their history.](https://auth0.com/blog/javascript-module-systems-showdown/)
+
+I will be using ES2015 modules as they produce the simplest code. Additionally, ES2015 support comes for free since I will be using Babel for its React support. See [ES6 To ES5 Transpilation](#transpilation) for more information on why I will be using Babel.
+
+I will use Webpack instead of JSPM because JSPM appears to be too immature at this point. See [this site](http://ilikekillnerds.com/2016/03/ditching-jspmsystem-js-webpack/) for one user's negative experience with JSPM. Please correct me if I am wrong in ignoring JSPM. It appears to be poised to overtake Webpack at some point in the future. I look forward to adopting it when it becomes sufficiently mature. 
+
+I will use Webpack instead of Browserify because it provides a more cohesive solution. Browserify and Webpack provide roughly the same features when one considers both the tools and their ecosystems of plugins and loaders. However, Webpack does a better job of enabling the user to utilize those features in a concise, complete manner. Browserify applies the Unix philosophy of doing one thing well, modules for JavaScript, and requires the user to add many other tools to create a fully functioning web application. Since life is short and I want to focus on things other than my application's module and build systems, I will use Browserify. ([Note: I've made many unsupported assertions in this paragraph. This site supports those assertions.](https://medium.com/@housecor/browserify-vs-webpack-b3d7ca08a0a9#.pndg60bg2))
 
 ### Webpack Reading
 1.  [Webpack Documentation Intro](https://webpack.github.io/docs/usage.html)
 1.  [Short Webpack Tutorial](https://webpack.github.io/docs/tutorials/getting-started/)
 1.  [Thorough Webpack Tutorial](http://survivejs.com/webpack/introduction/) 
 
-## ES6 To ES5 Transpilation
+## ES6 To ES5 Transpilation <a name="transpilation"></a>
 The only two players I can find in this space are Babel and Traceur. I will use Babel as it appears to have won in this space. Facebook now uses it as their [standard transpiler for React](https://facebook.github.io/react/docs/displaying-data.html) and as their standard method for [converting Flowtype code to regular Javascript](https://flowtype.org/docs/getting-started.html#_).  Additionally, of those that compared Traceur and Babel, the [difference appears to be negligible for features other than React and Flowtype support](http://ilikekillnerds.com/2015/01/transpiling-wars-6to5-vs-traceur/). 
 
 ## NPM
