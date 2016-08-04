@@ -1,6 +1,6 @@
 # Justified-Opinionated-Boilerplate
 
-A justified and opinionated template for creating web applications with React and Redux. I created this template to explain to others (and myself) what technologies one should use when creating a web application with React and Redux. I created this template to fill a whole in the React/Redux ecosystem: while there are many other existing templates, they do not explain their decisions nor the other options. Please make a pull request with any suggestions.
+A justified and opinionated template for creating web applications with React and Redux. I created this template to explain to others (and myself) what technologies one should use when creating a web application with React and Redux. While there are many other existing templates, they do not explain their decisions nor the other options. I do not claim that my opinions are correct, merely that they are justified and good enough to get the JOB done. Please make a pull request with any suggestions or corrections.
 
 ## Background
 
@@ -35,18 +35,12 @@ React does a better job at maintaining state than Angular because it better sepa
 
 Note: It is possible to do appropriate state management in [Angular 2 using Redux](https://medium.com/google-developer-experts/angular-2-introduction-to-redux-1cf18af27e6e#.809kaj1ra). Additionally, it is possible to have bad state management in [React with two-way data bindings](https://facebook.github.io/react/docs/two-way-binding-helpers.html). However, React defaults to good state management, as one-way data bindings are the default, while [Angular encourages poor state management in its documentation](https://angular.io/docs/ts/latest/guide/architecture.html#!#data-binding).
 
-
-As the number of stateful objects increases, the code must address not only each components' internal state but also each interaction between components for all possible combinations of states. that the code must be more complicated as it must address all possible combinations of states. 
-1. State makes testing harder because the each component must now be tested both for all possible states it has internally and its different interactions with other components depending their internal states. This combinatoric issue drastically increases the number of tests.
-
-
-
-for all possible interactions State increases the number of potential bugs because it makes each usage of a component Each component that maintains state 
- 
- Unfortunately, I cannot solve the debate between React and Angular in one section of a readme. The discussion is too complicated for me to successfully argue for one side in a few paragraphs. It also has been previously covered in great detail [by others](http://lmgtfy.com/?q=Angular+vs+React). Personally, I want to develop web applications with React because I have found state to be a dangerous beast that makes code difficult to understand, test, and maintain. When I previously used functional programming approaches that minimized state, I found that they made my projects more successful. 
+### React Reading
+1. [React Official Documentation](https://facebook.github.io/react/docs/why-react.html) - Read through the guides from "Why React?"
+ until (but not including) "Add-Ons". I would skip the tutorial as it does poor state management.
 
 ## State Management
-
+Redux is the dominant player for managing state in React web applications. Readers may have 
 
 
 ## Modules
