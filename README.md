@@ -38,9 +38,13 @@ Note: It is possible to do appropriate state management in [Angular 2 using Redu
 ### React Reading
 1. [React Official Documentation](https://facebook.github.io/react/docs/why-react.html) - Read through the guides from "Why React?"
  until (but not including) "Add-Ons". I would skip the tutorial as it does poor state management.
-
+ 
 ## State Management
-Redux is the dominant player for managing state in React web applications. Readers may have 
+Redux is the dominant player for managing state in React web applications. Readers may have encountered other approaches for managing state, such as Flux or Reflux. However, Redux has won the battle for React state management.
+
+### Redux Reading
+1. [Redux Official Documentation](http://redux.js.org/index.html) - Read 1-3 and 4.5. Its very good.
+1. ALTERNATIVE - [Redux Videos](https://egghead.io/courses/getting-started-with-redux) - I don't like learning from videos, so I've never seen these. However, they appear to be highly recommended by others. Watch them if you prefer watching to reading.
 
 
 ## Modules
@@ -67,3 +71,5 @@ Not worth discussing at this point. NPM is obviously the current dominant packag
 
 ## Version Control
 Not worth discussing at this point. Git is obviously the current dominant VCS.
+
+### Git Reading
