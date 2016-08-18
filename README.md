@@ -13,7 +13,7 @@ Here are a curated and annotated list of sources explaining both how to use the 
 1. SASS is the successor to SCSS.
 1. CommonJS, AMD, and ES2015 Modules are several competing systems for creating reusable modules of JavaScript code. 
 
-## Overview
+## Description and Justification of Application Components
 
 This application uses:
 1. React for the UI
@@ -21,10 +21,12 @@ This application uses:
 1. ES6 with Flowtype as the programming language
 1. Webpack for building modules and managing module dependencies.
 1. Babel for transpiling ES6 to ES5.
+1. Mocha, Chai, Sinon, jsdom, and Enzyme for testing
+1. ESLint with Airbnb preset for linting
 1. NPM for package management and as the top-level program for running the build, lint, and test systems
 1. Git for source control
 
-## UI
+### UI
 There are currently two dominant players in this space: Angular 2 and React. This is not a perfect comparison as Angular 2 handles more than just the UI component of a website. Nevertheless, I will compare them. Angular 2 is the successor to [MVC-like frameworks such as Backbone, Knockout, Ember, and Angular 1](https://developer.mozilla.org/en-US/Apps/Fundamentals/Modern_web_app_architecture/MVC_architecture). It is the best framework to use at this moment if you want to create a MVC web application. However, React takes an alternative, functional approach that, when combined with an appropriate state manager like Redux, promises to make web applications significantly easier to develop and maintain.
  
 I prefer React and its ecosystem over Angular because it does a better job of managing state. State is a dangerous beast that makes an application hard to write, test, and maintain. 
@@ -35,19 +37,19 @@ React does a better job at maintaining state than Angular because it better sepa
 
 Note: It is possible to do appropriate state management in [Angular 2 using Redux](https://medium.com/google-developer-experts/angular-2-introduction-to-redux-1cf18af27e6e#.809kaj1ra). Additionally, it is possible to have bad state management in [React with two-way data bindings](https://facebook.github.io/react/docs/two-way-binding-helpers.html). However, React defaults to good state management, as one-way data bindings are the default, while [Angular encourages poor state management in its documentation](https://angular.io/docs/ts/latest/guide/architecture.html#!#data-binding).
 
-### React Reading
+#### React Reading
 1. [React Official Documentation](https://facebook.github.io/react/docs/why-react.html) - Read through the guides from "Why React?"
  until (but not including) "Add-Ons". I would skip the tutorial as it does poor state management.
  
-## State Management
+### State Management
 Redux is the dominant player for managing state in React web applications. Readers may have encountered other approaches for managing state, such as Flux or Reflux. However, Redux has won the battle for React state management.
 
-### Redux Reading
+#### Redux Reading
 1. [Redux Official Documentation](http://redux.js.org/index.html) - Read 1-3 and 4.5. Its very good.
 1. ALTERNATIVE - [Redux Videos](https://egghead.io/courses/getting-started-with-redux) - I don't like learning from videos, so I've never seen these. However, they appear to be highly recommended by others. Watch them if you prefer watching to reading.
 
 
-## Modules
+### Modules
 Modules provide you with the ability to encapsulate and reuse your code. Unlike almost any other programming language you've ever used, JavaScript does not provide a simple way to create isolated blocks of code in separate files and reuse them across your project.  
 
 You need to make two choices when using modules in a JavaScript: which theoretical module system and which implementation of that system. As of August 2016, there are three main theoretical approaches to creating a JavaScript module system: CommonJS, AMD, and ES2015 Modules; and, there are three main implementations, all of which support all three methodologies: Browserify, Webpack, and JSPM (aka SystemJS).  [This site provides a good overview of the different theoretical module systems, the implementations, and their history.](https://auth0.com/blog/javascript-module-systems-showdown/)
@@ -58,18 +60,36 @@ I will use Webpack instead of JSPM because JSPM appears to be too immature at th
 
 I will use Webpack instead of Browserify because it provides a more cohesive solution. Browserify and Webpack provide roughly the same features when one considers both the tools and their ecosystems of plugins and loaders. However, Webpack does a better job of enabling the user to utilize those features in a concise, complete manner. Browserify applies the Unix philosophy of doing one thing well, modules for JavaScript, and requires the user to add many other tools to create a fully functioning web application. Since life is short and I want to focus on things other than my application's module and build systems, I will use Browserify. ([Note: I've made many unsupported assertions in this paragraph. This site supports those assertions.](https://medium.com/@housecor/browserify-vs-webpack-b3d7ca08a0a9#.pndg60bg2))
 
-### Webpack Reading
+#### Webpack Reading
 1.  [Webpack Documentation Intro](https://webpack.github.io/docs/usage.html)
 1.  [Short Webpack Tutorial](https://webpack.github.io/docs/tutorials/getting-started/)
 1.  [Thorough Webpack Tutorial](http://survivejs.com/webpack/introduction/) 
 
-## ES6 To ES5 Transpilation <a name="transpilation"></a>
+### ES6 To ES5 Transpilation <a name="transpilation"></a>
 The only two players I can find in this space are Babel and Traceur. I will use Babel as it appears to have won in this space. Facebook now uses it as their [standard transpiler for React](https://facebook.github.io/react/docs/displaying-data.html) and as their standard method for [converting Flowtype code to regular Javascript](https://flowtype.org/docs/getting-started.html#_).  Additionally, of those that compared Traceur and Babel, the [difference appears to be negligible for features other than React and Flowtype support](http://ilikekillnerds.com/2015/01/transpiling-wars-6to5-vs-traceur/). 
 
-## NPM
-Not worth discussing at this point. NPM is obviously the current dominant package manager for the web. Additionally, the Webpack and Babel tutorials clearly demonstrate that Node is the top-level program of choice.
+### Testing
+You need to make multiple decisions for testing. 
+1. Testing Framework - the tool that ["setups and describes test suites"](https://nicolas.perriault.net/code/2013/testing-frontend-javascript-code-using-mocha-chai-and-sinon/). 
+1. Test Runner - the tool that runs your tests 
+1. Assertion Library - the functions that test for validity conditions. While Node does include a default assert statement,  [Node's own documentation recommends using a different assertion library for testing your code.](https://nodejs.org/api/assert.html).
+1. DOM Library - the tool that creates a fake browser with a DOM for testing UI components. 
+1. Mocking Library - the tool that creates fake versions of dependencies. Often, testing one part of your code will require interacting with other parts of the program. Mocking enables you to create fake versions of the dependent objects to ensure that the tests occur with the program in exactly the correct state. 
+1. React Tools - other libraries that provide React-specific tooling
 
-## Version Control
-Not worth discussing at this point. Git is obviously the current dominant VCS.
+You should note that these categories are not strict barriers. Some tools cover multiple groups. One such tool is Mocha, a test framework that has its own test runner but also can be run with the Karma test runner. 
 
-### Git Reading
+I will use Mocha for my testing framework since it is [recommended in the Redux documentation](http://redux.js.org/docs/recipes/WritingTests.html). I will use Mocha's test runner since it is simpler to use that compared to adding another library. While I have looked at Karma, it doesn't have enough compelling features on top of Mocha's test runner to justify adding another library. I will use Chai for the assertion library, jsdom for the DOM library, Sinon for Mocking, and Enzyme for the React-specific testing tools. I don't have great justifications for these tools beyond the fact that they appear to be fairly popular choices for combining with Mocha. Additionally, choosing which testing tool matters much less than just having a working testing setup. Therefore, I will not labor over the testing choices more than is necessary to build a good web application.
+
+
+### Linting
+Linting programs enforce proper coding style. [There are many popular linting programs. However, there doesn't appear to be a great difference between the tools.](https://www.sitepoint.com/comparison-javascript-linting-tools/) The only important criteria is whether a tool ensures good coding style. I'm not too concerned with the debate between defaults and configuration. I chose ESlint with the babel plugin and Airbnb's React ESLint rules as they appear to give a sane set of defaults for React projects.
+
+### NPM
+I do not need to justify the choice of NPM at this time. NPM is obviously the current dominant package manager for the web. Additionally, the Webpack and Babel tutorials clearly demonstrate that Node is the top-level program of choice.
+
+### Version Control
+I do not need to justify the choice of Git at this time. Git is obviously the current dominant VCS.
+
+## How I Created The Template
+1. 
