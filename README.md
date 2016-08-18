@@ -16,6 +16,7 @@ Here are a curated and annotated list of sources explaining both how to use the 
 ## Description and Justification of Application Components
 
 This application uses:
+
 1. React for the UI
 1. Redux for managing state
 1. ES6 with Flowtype as the programming language
@@ -92,4 +93,7 @@ I do not need to justify the choice of NPM at this time. NPM is obviously the cu
 I do not need to justify the choice of Git at this time. Git is obviously the current dominant VCS.
 
 ## How I Created The Template
-1. 
+1. npm init . 
+1. Install plugin for [creating starter HTML page](https://www.npmjs.com/package/html-webpack-plugin) need to have a starting HTML page that loads the js bundle created by Webpack. It's better to have this page generated as part of the build system than to have a special start HTML file that I manage myself.
+1. Setup Webpack with Hello World example not from tutorial - https://webpack.github.io/docs/usage.html
+1. Setup NPM scripts for building with webpack and running webpack dev server - https://docs.npmjs.com/files/package.json
