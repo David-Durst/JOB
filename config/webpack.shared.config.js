@@ -4,7 +4,7 @@ var path = require('path')
 module.exports = function (isDev) {
     var jsLoadersConfig = {
         test: /\.js$/,
-        include: path.join(__dirname, 'src')
+        include: './src'
     }
 
     if (isDev) {
@@ -15,9 +15,12 @@ module.exports = function (isDev) {
     }
 
     return {
-        entry: ['babel-polyfill', './src/app.js'],
+        entry: [
+            'babel-polyfill',
+            './src/app.js'
+        ],
         output: {
-            path: path.join(__dirname, 'bin'),
+            path: './bin',
             filename: 'app.bundle.js'
         },
         plugins: [new HtmlWebpackPlugin({
