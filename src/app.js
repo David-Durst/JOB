@@ -1,3 +1,5 @@
-// @flow
-export const YO: string = 'hi';
-document.write("hello world")
+import Root from "./root"
+import React from "react"
+import ReactDOM from "react-dom"
+
+ReactDOM.render(<Root/>, document.getElementById("app"));

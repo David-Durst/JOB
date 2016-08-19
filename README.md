@@ -94,8 +94,8 @@ I do not need to justify the choice of Git at this time. Git is obviously the cu
 
 ## How I Created The Template
 1. npm init . 
-1. Install plugin for [creating starter HTML page](https://www.npmjs.com/package/html-webpack-plugin) need to have a starting HTML page that loads the js bundle created by Webpack. It's better to have this page generated as part of the build system than to have a special start HTML file that I manage myself.
-1. Setup Webpack with Hello World example not from tutorial - https://webpack.github.io/docs/usage.html
+1. Install plugins for [creating starter HTML page](https://www.npmjs.com/package/html-webpack-plugin) and a [template HTML page](https://github.com/jaketrent/html-webpack-template). I need to have a starting HTML page that loads the js bundle created by Webpack. It's better to have this page generated as part of the build system rather than to have a special start HTML file that I manage myself.
+1. Setup Webpack with Hello World example not from tutorial - https://webpack.github.io/docs/usage.html. Also, note to turn on source-map in devtool to have better error messages - http://cheng.logdown.com/posts/2016/03/25/679045 explains why I use that option, https://webpack.github.io/docs/configuration.html#devtool shows the setting
 1. Setup NPM scripts for building with webpack and running webpack dev server - https://docs.npmjs.com/files/package.json
 1. Follow Pro React's guide for setting up Babel compilation of ES6 and React components through Webpack. See section "Babel", subsections "Installation and configuration" and "Babel configuration file" of http://www.pro-react.com/materials/appendixA/.
     1. Unfortunately, I need to put Babel's config file, .babelrc, in project root. Look at "Lookup behavior" section of https://babeljs.io/docs/usage/babelrc/ for an explanation of the file location.

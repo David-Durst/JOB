@@ -2,19 +2,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path')
 
 module.exports = function (isDev) {
-    var jsLoadersConfig = {
-        test: /\.js$/,
-        include: './src'
-    }
-
-    if (!isDev) {
-        jsLoadersConfig.loader = 'babel'
-    }
-    else {
-        jsLoadersConfig.loaders = ['react-hot', 'babel']
-    }
-
-    return {
+    var configToReturn = {
         entry: [
             'babel-polyfill',
             './src/app.js'
@@ -24,10 +12,36 @@ module.exports = function (isDev) {
             filename: 'app.bundle.js'
         },
         plugins: [new HtmlWebpackPlugin({
-            title: "Hello World Title"
+            title: 'Hello World Title',
+            inject: false,
+            template: require('html-webpack-template'),
+            appMountId: 'app'
         })],
         module: {
-            loaders: [jsLoadersConfig]
+            loaders: []
         }
     }
+
+    //add the js loader
+    var jsLoadersConfig = {
+        test: /\.js$/,
+        include: /src/
+    }
+
+    if (!isDev) {
+        jsLoadersConfig.loader = 'babel'
+    }
+    else {
+        jsLoadersConfig.loaders = ['react-hot', 'babel']
+    }
+
+    configToReturn.module.loaders.push(jsLoadersConfig)
+
+    // turn on devtools if in dev
+
+    if (isDev) {
+        configToReturn.devtool = 'cheap-module-eval-source-map'
+    }
+
+    return configToReturn;
 }
