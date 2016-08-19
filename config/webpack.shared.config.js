@@ -7,7 +7,7 @@ module.exports = function (isDev) {
         include: './src'
     }
 
-    if (isDev) {
+    if (!isDev) {
         jsLoadersConfig.loader = 'babel'
     }
     else {
