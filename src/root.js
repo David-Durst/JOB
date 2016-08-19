@@ -1,11 +1,9 @@
 import React from "react"
 
-const hiMessage = () => {
-    return <h1>{"Hello Woqrd322"}</h1>;
-}
-
+const HiMessage = (props) => <div>{"Hello World"}</div>;
+console.log("Test debugging message");
 export class Root extends React.Component {
     render() {
-        return (<div>{"hi"}<hiMessage/></div>);
+        return <div><HiMessage /></div>;
     }
 }

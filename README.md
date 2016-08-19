@@ -41,6 +41,7 @@ Note: It is possible to do appropriate state management in [Angular 2 using Redu
 #### React Reading
 1. [React Official Documentation](https://facebook.github.io/react/docs/why-react.html) - Read through the guides from "Why React?"
  until (but not including) "Add-Ons". I would skip the tutorial as it does poor state management.
+1. [React components must be capitalized.](http://stackoverflow.com/questions/33259112/why-do-components-in-react-need-to-be-capitalized) This gotcha frustrated me for a bit.
  
 ### State Management
 Redux is the dominant player for managing state in React web applications. Readers may have encountered other approaches for managing state, such as Flux or Reflux. However, Redux has won the battle for React state management.
@@ -55,7 +56,7 @@ Modules provide you with the ability to encapsulate and reuse your code. Unlike 
 
 You need to make two choices when using modules in a JavaScript: which theoretical module system and which implementation of that system. As of August 2016, there are three main theoretical approaches to creating a JavaScript module system: CommonJS, AMD, and ES2015 Modules; and, there are three main implementations, all of which support all three methodologies: Browserify, Webpack, and JSPM (aka SystemJS).  [This site provides a good overview of the different theoretical module systems, the implementations, and their history.](https://auth0.com/blog/javascript-module-systems-showdown/)
 
-I will be using ES2015 modules as they produce the simplest code. Additionally, ES2015 support comes for free since I will be using Babel for its React support. See [ES6 To ES5 Transpilation](#transpilation) for more information on why I will be using Babel.
+I will be using ES2015 modules as they produce the simplest code. Additionally, ES2015 support comes for free since I will be using Babel for its React support. See [ES6 To ES5 Transpilation](#transpilation) for more information on why I will be using Babel. See [this explanation](http://www.2ality.com/2014/09/es6-modules-final.html) for more information on ES2015 modules.
 
 I will use Webpack instead of JSPM because JSPM appears to be too immature at this point. See [this site](http://ilikekillnerds.com/2016/03/ditching-jspmsystem-js-webpack/) for one user's negative experience with JSPM. Please correct me if I am wrong in ignoring JSPM. It appears to be poised to overtake Webpack at some point in the future. I look forward to adopting it when it becomes sufficiently mature. 
 
@@ -95,7 +96,8 @@ I do not need to justify the choice of Git at this time. Git is obviously the cu
 ## How I Created The Template
 1. npm init . 
 1. Install plugins for [creating starter HTML page](https://www.npmjs.com/package/html-webpack-plugin) and a [template HTML page](https://github.com/jaketrent/html-webpack-template). I need to have a starting HTML page that loads the js bundle created by Webpack. It's better to have this page generated as part of the build system rather than to have a special start HTML file that I manage myself.
-1. Setup Webpack with Hello World example not from tutorial - https://webpack.github.io/docs/usage.html. Also, note to turn on source-map in devtool to have better error messages - http://cheng.logdown.com/posts/2016/03/25/679045 explains why I use that option, https://webpack.github.io/docs/configuration.html#devtool shows the setting
+1. Setup Webpack with Hello World example not from tutorial - https://webpack.github.io/docs/usage.html. Also, note to turn on source-map in devtool to have better error messages - http://cheng.logdown.com/posts/2016/03/25/679045 explains why I use that option, https://webpack.github.io/docs/configuration.html#devtool shows the setting. 
+   1. [This page](https://github.com/gaearon/react-hot-loader/blob/master/docs/Troubleshooting.md#the-following-modules-couldnt-be-hot-updated-they-would-need-a-full-reload) states that the root component must not be a stateless, functional component in order for hot reloading to work. This was a frustrating issue during framework development. 
 1. Setup NPM scripts for building with webpack and running webpack dev server - https://docs.npmjs.com/files/package.json
 1. Follow Pro React's guide for setting up Babel compilation of ES6 and React components through Webpack. See section "Babel", subsections "Installation and configuration" and "Babel configuration file" of http://www.pro-react.com/materials/appendixA/.
     1. Unfortunately, I need to put Babel's config file, .babelrc, in project root. Look at "Lookup behavior" section of https://babeljs.io/docs/usage/babelrc/ for an explanation of the file location.
