@@ -1,14 +1,19 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path')
 
+// make paths absolute using dirname, with fix since config file is in config folder
+function makeAbsolutePath(relPath) {
+    return path.join(__dirname, "..", relPath)
+}
+
 module.exports = function (isDev) {
     var configToReturn = {
         entry: [
             'babel-polyfill',
-            './src/app.js'
+            makeAbsolutePath('src/app.js')
         ],
         output: {
-            path: './bin',
+            path: makeAbsolutePath('bin'),
             filename: 'app.bundle.js'
         },
         plugins: [new HtmlWebpackPlugin({
@@ -21,7 +26,7 @@ module.exports = function (isDev) {
             preLoaders: [
                 {
                     test: /\.js$/,
-                    include: /src/,
+                    include: makeAbsolutePath('src'),
                     loader: 'eslint-loader'
                 }
             ],
@@ -38,7 +43,7 @@ module.exports = function (isDev) {
     //add the ES6 transpilation loader, with hot reloading if in dev mode
     var jsLoadersConfig = {
         test: /\.js$/,
-        include: /src/
+        include: makeAbsolutePath('src')
     }
 
     if (!isDev) {
