@@ -3,7 +3,7 @@ var path = require('path')
 
 // make paths absolute using dirname, with fix since config file is in config folder
 function makeAbsolutePath(relPath) {
-    return path.join(__dirname, "..", relPath)
+    return path.join(__dirname, '..', relPath)
 }
 
 module.exports = function (isDev) {
@@ -40,7 +40,7 @@ module.exports = function (isDev) {
         }
     }
 
-    //add the ES6 transpilation loader, with hot reloading if in dev mode
+    // add the ES6 transpilation loader, with hot reloading if in dev mode
     var jsLoadersConfig = {
         test: /\.js$/,
         include: makeAbsolutePath('src')
