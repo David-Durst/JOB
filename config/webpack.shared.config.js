@@ -18,11 +18,24 @@ module.exports = function (isDev) {
             appMountId: 'app'
         })],
         module: {
+            preLoaders: [
+                {
+                    test: /\.js$/,
+                    include: /src/,
+                    loader: 'eslint-loader'
+                }
+            ],
             loaders: []
+        },
+        eslint: {
+            configFile: 'config/.eslintrc'
+        },
+        devServer: {
+            stats: 'errors-only'
         }
     }
 
-    //add the js loader
+    //add the ES6 transpilation loader, with hot reloading if in dev mode
     var jsLoadersConfig = {
         test: /\.js$/,
         include: /src/

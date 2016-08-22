@@ -19,7 +19,7 @@ This application uses:
 
 1. React for the UI
 1. Redux for managing state
-1. ES6 with Flowtype as the programming language
+1. ES6 as the programming language
 1. Webpack for building modules and managing module dependencies.
 1. Babel for transpiling ES6 to ES5.
 1. Mocha, Chai, Sinon, jsdom, and Enzyme for testing
@@ -70,6 +70,9 @@ I will use Webpack instead of Browserify because it provides a more cohesive sol
 ### ES6 To ES5 Transpilation <a name="transpilation"></a>
 The only two players I can find in this space are Babel and Traceur. I will use Babel as it appears to have won in this space. Facebook now uses it as their [standard transpiler for React](https://facebook.github.io/react/docs/displaying-data.html) and as their standard method for [converting Flowtype code to regular Javascript](https://flowtype.org/docs/getting-started.html#_).  Additionally, of those that compared Traceur and Babel, the [difference appears to be negligible for features other than React and Flowtype support](http://ilikekillnerds.com/2015/01/transpiling-wars-6to5-vs-traceur/). 
 
+### Why No Statically-Typed Language
+The two major players in this field are FlowType and TypeScript. I consider both to be too immature to use at this point. Not all libraries have type definitions and writing definitions for other projects is a bad idea. Writing definitions for other projects will require developers to own not only their own code base but also part of other code bases. Since FlowType and TypeScript both lack better methods for mixing typed and untyped code than making intefaces with the Any type, I will be using the dynamically typed ES6 for now.
+
 ### Testing
 You need to make multiple decisions for testing. 
 1. Testing Framework - the tool that ["setups and describes test suites"](https://nicolas.perriault.net/code/2013/testing-frontend-javascript-code-using-mocha-chai-and-sinon/). 
@@ -96,7 +99,7 @@ I do not need to justify the choice of Git at this time. Git is obviously the cu
 ## How I Created The Template
 1. npm init . 
 1. Install plugins for [creating starter HTML page](https://www.npmjs.com/package/html-webpack-plugin) and a [template HTML page](https://github.com/jaketrent/html-webpack-template). I need to have a starting HTML page that loads the js bundle created by Webpack. It's better to have this page generated as part of the build system rather than to have a special start HTML file that I manage myself.
-1. Setup Webpack with Hello World example not from tutorial - https://webpack.github.io/docs/usage.html. Also, note to turn on source-map in devtool to have better error messages - http://cheng.logdown.com/posts/2016/03/25/679045 explains why I use that option, https://webpack.github.io/docs/configuration.html#devtool shows the setting. 
+1. Setup Webpack with Hello World example not from tutorial - https://webpack.github.io/docs/usage.html. Also, note to turn on source-map in devtool to have better error messages in the browser's console - http://cheng.logdown.com/posts/2016/03/25/679045 explains why I use that option, https://webpack.github.io/docs/configuration.html#devtool shows the setting. Also, I enable stats: 'errors-only' to quiet WebPack's output to only relevant errors in the build console.
    1. [This page](https://github.com/gaearon/react-hot-loader/blob/master/docs/Troubleshooting.md#the-following-modules-couldnt-be-hot-updated-they-would-need-a-full-reload) states that the root component must not be a stateless, functional component in order for hot reloading to work. This was a frustrating issue during framework development. 
 1. Setup NPM scripts for building with webpack and running webpack dev server - https://docs.npmjs.com/files/package.json
 1. Follow Pro React's guide for setting up Babel compilation of ES6 and React components through Webpack. See section "Babel", subsections "Installation and configuration" and "Babel configuration file" of http://www.pro-react.com/materials/appendixA/.
@@ -106,6 +109,6 @@ I do not need to justify the choice of Git at this time. Git is obviously the cu
 1. Add the React Hot Loader so that when changes on made to the website during development, the server automatically replaces the React components. I followed a combination of https://webpack.github.io/docs/webpack-dev-server.html and http://gaearon.github.io/react-hot-loader/getstarted/ . I use the webpack-dev-server command with the --inline and --hot commands rather than the custom server.js file from gaearon's page as it accomplishes the same goal with less effort. 
 1. Adding in redux, react-redux for connections with react, redux-logger for logging states. Also, adding in react-router for handling routes and react-redux-router for connecting react-router to redux's state. Finally, adding redux-devtools for tools for debugging redux. I'm using these as they provide necessary functionality for a real site and are the libraries used in the standard Redux examples https://github.com/reactjs/redux/blob/master/examples/real-world/package.json . 
 1. Adding in redux-thunk for handling async actions such as loading data over the network. I'm doing this as it is the recommend library from redux's documentation http://redux.js.org/docs/advanced/AsyncActions.html .
-1. Adding flowtype plugins for Babel to both check types and strip type annotations using https://flowtype.org/docs/running.html and https://github.com/codemix/babel-plugin-typecheck . Used this tweet to know that Babel type stripping plugin was insufficient https://twitter.com/dan_abramov/status/668566599658569729 . 
+1. Install Eslint with Airbnb's ES6 and React defaults using https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb. I put the .eslintrc file in the config folder. I also added eslint-loader. This guide was also helpful https://medium.com/@tkssharma/eslint-in-react-babel-webpack-9cb1c4e86f4e#.gi9pd33wt.
 
 https://nicolas.perriault.net/code/2013/testing-frontend-javascript-code-using-mocha-chai-and-sinon/
