@@ -10,7 +10,7 @@ module.exports = function (isDev) {
     var configToReturn = {
         entry: [
             'babel-polyfill',
-            makeAbsolutePath('src/app.js')
+            makeAbsolutePath('src/main/app.js')
         ],
         output: {
             path: makeAbsolutePath('bin'),
@@ -33,7 +33,7 @@ module.exports = function (isDev) {
             loaders: []
         },
         eslint: {
-            configFile: 'config/.eslintrc'
+            configFile: 'config/.eslintrc.json'
         },
         devServer: {
             stats: 'errors-only'
