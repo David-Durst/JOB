@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --progress --config config/webpack.build.config.js",
     "dev": "webpack-dev-server --progress --colors --inline --hot --config config/webpack.dev.config.js",
-    "test": "mocha --require setup.js --watch --compilers js:babel-register --recursive src/test/"
+    "test": "mocha --require src/test/setup.js --watch --compilers js:babel-register --recursive src/test/"
   },
   "keywords": [
     "react",

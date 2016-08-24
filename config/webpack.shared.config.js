@@ -33,7 +33,7 @@ module.exports = function (isDev) {
             loaders: []
         },
         eslint: {
-            configFile: 'config/.eslintrc.json'
+            configFile: '.eslintrc.json'
         },
         devServer: {
             stats: 'errors-only'

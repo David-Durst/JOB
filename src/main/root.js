@@ -1,6 +1,6 @@
 import React from 'react';
 
-function HiMessage() {
+export function HiMessage() {
     return <div>{"Hello World"}</div>;
 }
 
