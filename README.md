@@ -1,10 +1,30 @@
 # Justified-Opinionated-Boilerplate
 
+A justified and opinionated boilerplate for creating web applications that shows which tools to use, why to use them instead of other options, and how to combine them. The code in this repository is an example of how to combine the tools. This boilerplate does not explain how to use each tool beyond what is necessary to justify the choice and integrate it into a complete application. I have addressed each individual piece by including links to a curated list of component-specific tutorials. A curated list of component-specific tutorials is more thorough and easier to understand than a massive, monolithic document explaining the entirety of web development. This guide provides the necessary setup so you can follow the guides without worrying about how to integrate the individual tools into a larger web application. 
+
+I do not claim that my opinions are correct, merely that they are justified and good enough to get the JOB done. Please make a pull request with any suggestions or corrections.
+
+n how to actually use each tool. Those tutorials do a better job of explaining each individual tool than a monolithic guide to the entirety of web development. does not directly explain how to use each tool. Rather, it links to tutorials  do not explain how to use each individual tool.
+
+The creators of those tools are better suited to the task of explaining how to use their individual tools.
+
+This boilerplate addresses a hole in the web ecosystem: which options to chose and how to combine the parts. While there are many good options for and tutorials on creating individual parts of web applications, no o 
+ 
+ I created this template to explain to others (and myself) what technologies one should use when creating a web application with React and Redux. While there are many other existing templates, they do not explain their decisions nor the other options.
+
+## Background
+
+Today, there are too many options and too few opinions on how to build a web application. I show which tools to use, why to use them instead of other options, and how to combine them. However, I do not explain how to use each individual tool. The creators of those tools are better suited to the task of explaining how to use their individual tools. Therefore, I  Therefore, I recommend using this boilerplate along with the [Redux documentation](http://redux.js.org/docs/introduction/index.html) to see how to go from nothing a fully functioning application. a curated and annotated list of sources explaining both how to use the technologies in this template and why I chose them. Additionally, I have included my own thoughts when necessary. I consider this to be the minimum subset of reading necessary to understand all the technologies.
+
+
+
 A justified and opinionated template for creating web applications with React and Redux. I created this template to explain to others (and myself) what technologies one should use when creating a web application with React and Redux. While there are many other existing templates, they do not explain their decisions nor the other options. I do not claim that my opinions are correct, merely that they are justified and good enough to get the JOB done. Please make a pull request with any suggestions or corrections.
 
 ## Background
 
-Here are a curated and annotated list of sources explaining both how to use the technologies in this template and why I chose them. Additionally, I have included my own thoughts when necessary. I consider this to be the minimum subset of reading necessary to understand all the technologies. 
+Today, there are too many options and too few opinions on how to build a web application. I show which tools to use, why to use them instead of other options, and how to combine them. However, I do not explain how to use each individual tool. The creators of those tools are better suited to the task of explaining how to use their individual tools. Therefore, I  Therefore, I recommend using this boilerplate along with the [Redux documentation](http://redux.js.org/docs/introduction/index.html) to see how to go from nothing a fully functioning application. a curated and annotated list of sources explaining both how to use the technologies in this template and why I chose them. Additionally, I have included my own thoughts when necessary. I consider this to be the minimum subset of reading necessary to understand all the technologies. 
+
+he how to create a web application's build, GUI, and test systems. It shows
 
 ## Terminology That Confuses Me
 1. JavaScript == ECMAScript
@@ -14,6 +34,8 @@ Here are a curated and annotated list of sources explaining both how to use the 
 1. CommonJS, AMD, and ES2015 Modules are several competing systems for creating reusable modules of JavaScript code. 
 
 ## Description and Justification of Application Components
+
+## Overview
 
 This application uses:
 
@@ -118,3 +140,4 @@ I do not need to justify the choice of Git at this time. Git is obviously the cu
         1. I turned on the Mocha and Browser environments so that ESLint doesn't reject valid global variables that aren't defined in my code - see http://eslint.org/docs/user-guide/configuring#specifying-environments 
 1. Install Mocha, Chai, Sinon, Enzyme, and JSDOM. [This site](https://github.com/airbnb/enzyme) explains how to install Enzyme with React 15.x. [This site](https://github.com/airbnb/enzyme/blob/master/docs/guides/jsdom.md) describes how to integrate JSDOM with Enzyme.
 https://nicolas.perriault.net/code/2013/testing-frontend-javascript-code-using-mocha-chai-and-sinon/
+1. I wrote a basic Hello World example with tests. I recommend reading the [Redux guide](http://redux.js.org/docs/introduction/) to see how to create the site.  
