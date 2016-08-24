@@ -4,27 +4,7 @@ A justified and opinionated boilerplate for creating web applications that shows
 
 I do not claim that my opinions are correct, merely that they are justified and good enough to get the JOB done. Please make a pull request with any suggestions or corrections.
 
-n how to actually use each tool. Those tutorials do a better job of explaining each individual tool than a monolithic guide to the entirety of web development. does not directly explain how to use each tool. Rather, it links to tutorials  do not explain how to use each individual tool.
-
-The creators of those tools are better suited to the task of explaining how to use their individual tools.
-
-This boilerplate addresses a hole in the web ecosystem: which options to chose and how to combine the parts. While there are many good options for and tutorials on creating individual parts of web applications, no o 
- 
- I created this template to explain to others (and myself) what technologies one should use when creating a web application with React and Redux. While there are many other existing templates, they do not explain their decisions nor the other options.
-
-## Background
-
-Today, there are too many options and too few opinions on how to build a web application. I show which tools to use, why to use them instead of other options, and how to combine them. However, I do not explain how to use each individual tool. The creators of those tools are better suited to the task of explaining how to use their individual tools. Therefore, I  Therefore, I recommend using this boilerplate along with the [Redux documentation](http://redux.js.org/docs/introduction/index.html) to see how to go from nothing a fully functioning application. a curated and annotated list of sources explaining both how to use the technologies in this template and why I chose them. Additionally, I have included my own thoughts when necessary. I consider this to be the minimum subset of reading necessary to understand all the technologies.
-
-
-
-A justified and opinionated template for creating web applications with React and Redux. I created this template to explain to others (and myself) what technologies one should use when creating a web application with React and Redux. While there are many other existing templates, they do not explain their decisions nor the other options. I do not claim that my opinions are correct, merely that they are justified and good enough to get the JOB done. Please make a pull request with any suggestions or corrections.
-
-## Background
-
-Today, there are too many options and too few opinions on how to build a web application. I show which tools to use, why to use them instead of other options, and how to combine them. However, I do not explain how to use each individual tool. The creators of those tools are better suited to the task of explaining how to use their individual tools. Therefore, I  Therefore, I recommend using this boilerplate along with the [Redux documentation](http://redux.js.org/docs/introduction/index.html) to see how to go from nothing a fully functioning application. a curated and annotated list of sources explaining both how to use the technologies in this template and why I chose them. Additionally, I have included my own thoughts when necessary. I consider this to be the minimum subset of reading necessary to understand all the technologies. 
-
-he how to create a web application's build, GUI, and test systems. It shows
+I recommend finding another boilerplate if you just want to get started with React and Redux as quickly as possible. This boilerplate is a tool for learning.
 
 ## Terminology That Confuses Me
 1. JavaScript == ECMAScript
@@ -34,8 +14,6 @@ he how to create a web application's build, GUI, and test systems. It shows
 1. CommonJS, AMD, and ES2015 Modules are several competing systems for creating reusable modules of JavaScript code. 
 
 ## Description and Justification of Application Components
-
-## Overview
 
 This application uses:
 
@@ -119,6 +97,7 @@ I do not need to justify the choice of NPM at this time. NPM is obviously the cu
 I do not need to justify the choice of Git at this time. Git is obviously the current dominant VCS.
 
 ## How I Created The Template
+
 1. npm init . 
 1. Install plugins for [creating starter HTML page](https://www.npmjs.com/package/html-webpack-plugin) and a [template HTML page](https://github.com/jaketrent/html-webpack-template). I need to have a starting HTML page that loads the js bundle created by Webpack. It's better to have this page generated as part of the build system rather than to have a special start HTML file that I manage myself.
 1. Setup Webpack with Hello World example not from tutorial - https://webpack.github.io/docs/usage.html. Also, note to turn on source-map in devtool to have better error messages in the browser's console - http://cheng.logdown.com/posts/2016/03/25/679045 explains why I use that option, https://webpack.github.io/docs/configuration.html#devtool shows the setting. Also, I enable stats: 'errors-only' to quiet WebPack's output to only relevant errors in the build console.
