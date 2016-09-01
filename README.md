@@ -6,6 +6,7 @@ I do not claim that my opinions are correct, merely that they are justified and 
 
 I recommend finding another boilerplate if you just want to get started with React and Redux as quickly as possible. This boilerplate is a tool for learning.
 
+
 ## Terminology That Confuses Me
 1. JavaScript == ECMAScript
 1. ECMAScript 2015 == ES2015 == ECMAScript 6 == ES6
@@ -31,6 +32,7 @@ This application uses:
 There are currently two dominant players in this space: Angular 2 and React. This is not a perfect comparison as Angular 2 handles more than just the UI component of a website. Nevertheless, I will compare them. Angular 2 is the successor to [MVC-like frameworks such as Backbone, Knockout, Ember, and Angular 1](https://developer.mozilla.org/en-US/Apps/Fundamentals/Modern_web_app_architecture/MVC_architecture). It is the best framework to use at this moment if you want to create a MVC web application. However, React takes an alternative, functional approach that, when combined with an appropriate state manager like Redux, promises to make web applications significantly easier to develop and maintain.
  
 I prefer React and its ecosystem over Angular because it does a better job of managing state. State is a dangerous beast that makes an application hard to write, test, and maintain. 
+
 1. State makes writing and testing software harder as the developer must address a more complicated system. A stateless component behaves the same way every time it is called with the same inputs. However, a stateful component can react differently depending on the previous events. This means that, for stateful components, the developer must write code and tests that address all possible states of the component. Additionally, if stateful components interact, the developer must address all possible combinations of states of the interacting components. This number of combinations can quickly grow very large, leading to a large, complicated codebase and many tests. 
 1. State makes maintenance much harder as someone new to the project must understand not only the inputs and outputs of each component but also the internal states of the components and how those states develop throughout the lifetime of the application.
 
@@ -60,7 +62,7 @@ I will be using ES2015 modules as they produce the simplest code. Additionally, 
 
 I will use Webpack instead of JSPM because JSPM appears to be too immature at this point. See [this site](http://ilikekillnerds.com/2016/03/ditching-jspmsystem-js-webpack/) for one user's negative experience with JSPM. Please correct me if I am wrong in ignoring JSPM. It appears to be poised to overtake Webpack at some point in the future. I look forward to adopting it when it becomes sufficiently mature. 
 
-I will use Webpack instead of Browserify because it provides a more cohesive solution. Browserify and Webpack provide roughly the same features when one considers both the tools and their ecosystems of plugins and loaders. However, Webpack does a better job of enabling the user to utilize those features in a concise, complete manner. Browserify applies the Unix philosophy of doing one thing well, modules for JavaScript, and requires the user to add many other tools to create a fully functioning web application. Since life is short and I want to focus on things other than my application's module and build systems, I will use Browserify. ([Note: I've made many unsupported assertions in this paragraph. This site supports those assertions.](https://medium.com/@housecor/browserify-vs-webpack-b3d7ca08a0a9#.pndg60bg2))
+I will use Webpack instead of Browserify because it provides a more cohesive solution. Browserify and Webpack provide roughly the same features when one considers both the tools and their ecosystems of plugins and loaders. However, Webpack does a better job of enabling the user to utilize those features in a concise, complete manner. Browserify applies the Unix philosophy of doing one thing well, modules for JavaScript, and requires the user to add many other tools to create a fully functioning web application. Since life is short and I want to focus on things other than my application's module and build systems, I will use Webpack. ([Note: I've made many unsupported assertions in this paragraph. This site supports those assertions.](https://medium.com/@housecor/browserify-vs-webpack-b3d7ca08a0a9#.pndg60bg2))
 
 #### Webpack Reading
 1.  [Webpack Documentation Intro](https://webpack.github.io/docs/usage.html)
@@ -75,6 +77,7 @@ The two major players in this field are FlowType and TypeScript. I consider both
 
 ### Testing
 You need to make multiple decisions for testing. 
+
 1. Testing Framework - the tool that ["setups and describes test suites"](https://nicolas.perriault.net/code/2013/testing-frontend-javascript-code-using-mocha-chai-and-sinon/). 
 1. Test Runner - the tool that runs your tests 
 1. Assertion Library - the functions that test for validity conditions. While Node does include a default assert statement,  [Node's own documentation recommends using a different assertion library for testing your code.](https://nodejs.org/api/assert.html).
@@ -119,4 +122,4 @@ I do not need to justify the choice of Git at this time. Git is obviously the cu
         1. I turned on the Mocha and Browser environments so that ESLint doesn't reject valid global variables that aren't defined in my code - see http://eslint.org/docs/user-guide/configuring#specifying-environments 
 1. Install Mocha, Chai, Sinon, Enzyme, and JSDOM. [This site](https://github.com/airbnb/enzyme) explains how to install Enzyme with React 15.x. [This site](https://github.com/airbnb/enzyme/blob/master/docs/guides/jsdom.md) describes how to integrate JSDOM with Enzyme.
 https://nicolas.perriault.net/code/2013/testing-frontend-javascript-code-using-mocha-chai-and-sinon/
-1. I wrote a basic Hello World example with tests. I recommend reading the [Redux guide](http://redux.js.org/docs/introduction/) to see how to create the site.  
+1. I wrote a basic Hello World example with tests. I recommend reading the [Redux guide](http://redux.js.org/docs/introduction/) to see how to create the a more complete, stateful site using Redux.

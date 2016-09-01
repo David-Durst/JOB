@@ -1,18 +1,17 @@
 {
-  "name": "react-redux-boilerplate",
-  "version": "0.0.1",
+  "name": "justified-opinionated-boilerplate",
+  "author": "David Durst",
   "description": "An opinionated template for using React and Redux.",
+  "version": "0.2.0",
+  "keywords": [
+    "react",
+    "redux"
+  ],
   "scripts": {
     "build": "webpack --progress --config config/webpack.build.config.js",
     "dev": "webpack-dev-server --progress --colors --inline --hot --config config/webpack.dev.config.js",
     "test": "mocha --require src/test/setup.js --watch --compilers js:babel-register --recursive src/test/"
   },
-  "keywords": [
-    "react",
-    "redux",
-    "boilerplate"
-  ],
-  "author": "David Durst",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.13.2",
