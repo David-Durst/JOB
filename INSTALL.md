@@ -14,4 +14,5 @@
 ## Commands For Development And Build   
 1. For running the development server: npm run dev
 1. For building the application: npm run build
+   1. Note: the build artifacts are placed in the bin folder.
 1. For running the unit tests: npm run test
